@@ -24,12 +24,20 @@ namespace cweb {
         return "<head><title>" + this->title + "</title></head>";
     }
 
-    body::body(element* content) {
-        this->content = content;
+    body::body() {
+        this->content = vector<element*>();
+    }
+
+    void body::addElement(element* element) {
+        this->content.push_back(element);
     }
 
     string body::getHTML() {
-        return "<body>" + this->content->getHTML() + "</body>";
+        string html = "<body>";
+        for (int i = 0; i < this->content.size(); i++) {
+            html += this->content[i]->getHTML();
+        }
+        return html + "</body>";
     }
 
     page::page(cweb::head* head, cweb::body* body) {

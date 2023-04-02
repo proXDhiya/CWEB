@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -32,10 +33,11 @@ namespace cweb {
 
     class body {
         private:
-            element* content;
+            vector<element*> content;
 
         public:
-            body(element* content);
+            body();
+            void addElement(element* element);
             string getHTML();
     };
 
